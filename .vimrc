@@ -63,6 +63,12 @@ set noerrorbells visualbell t_vb=
 " sometimes be convenient.
 set mouse+=a
 
+set ts=4 shiftwidth=4
+
+set expandtab
+
+set autoindent
+
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
 " for movement, rather than using more efficient movement commands, is also a
@@ -78,3 +84,9 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+"Makefile requires Tab must be Tab not 4 sapce
+autocmd FileType make set noexpandtab
+
+" Maintain undo history between sessions`
+set undofile 
+set undodir=~/.dotfiles/.vim/undodir

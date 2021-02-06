@@ -3,3 +3,5 @@
 	name = my871432122
 [core]
 	editor = vim
+[alias]
+	lg = log --all --graph --decorate --oneline
