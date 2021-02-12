@@ -54,6 +54,8 @@ set smartcase
 set incsearch
 
 " Unbind some useless/annoying default key bindings.
+map <C-a> <Nop>
+map <C-x> <Nop>
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
 " Disable audible bell because it's annoying.
@@ -86,6 +88,12 @@ inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 "Makefile requires Tab must be Tab not 4 sapce
 autocmd FileType make set noexpandtab
+" quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
 
 " Maintain undo history between sessions`
 set undofile 

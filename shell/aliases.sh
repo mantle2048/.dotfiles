@@ -12,6 +12,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+
 # Create a directory and cd into it
 mcd() {
     mkdir "${1}" && cd "${1}"
@@ -19,5 +20,5 @@ mcd() {
 
 # other alias
 alias fd=fdfind
-alias cht=cht.s
+alias cht=cht.sh
 alias gs='git status'
