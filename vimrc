@@ -81,13 +81,16 @@ nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
 nnoremap <Down>  :echoe "Use j"<CR>
+
 " ...and in insert mode
 inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
 "Makefile requires Tab must be Tab not 4 sapce
 autocmd FileType make set noexpandtab
+
 " quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -98,3 +101,18 @@ nnoremap <C-l> <C-w>l
 " Maintain undo history between sessions`
 set undofile 
 set undodir=~/.dotfiles/.vim/undodir
+
+"quick move between tabs"
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+"---------------------
+" Plugin configuration
+"---------------------
+
+" nerdtree
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
+
+" Ale
+nnoremap <Leader>a :ALEToggle<CR>

@@ -19,6 +19,5 @@ mcd() {
 }
 
 # other alias
-alias fd=fdfind
 alias cht=cht.sh
 alias gs='git status'
