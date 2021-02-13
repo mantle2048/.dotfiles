@@ -1,0 +1,5 @@
+nnn
+tmux
+vim
+cheat.sh
+fdfind
