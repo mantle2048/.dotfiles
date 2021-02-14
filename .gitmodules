@@ -4,5 +4,13 @@
     ignore = untracked
 [submodule "vim/bundle/nerdtree"]
     path = vim/pack/vendor/start/nerdtree
-        url = https://github.com/scrooloose/nerdtree
-            ignore = untracked
+    url = https://github.com/scrooloose/nerdtree
+    ignore = untracked
+[submodule "vim/bundle/vim-bundler"]
+    path = vim/pack/vendor/start/vim-bundler
+    url = https://github.com/tpope/vim-bundler.git
+    ignore = untracked
+[submodule "vim/bundle/ale"]
+    path = vim/pack/vendor/start/ale
+    url = https://github.com/dense-analysis/ale.git
+    ignore = untracked
