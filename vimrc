@@ -106,6 +106,8 @@ set undodir=~/.dotfiles/.vim/undodir
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
+"fast insert a blank line in current line"
+nnoremap <CR> o<Esc>
 "---------------------
 " Plugin configuration
 "---------------------
@@ -114,5 +116,17 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
 
-" Ale
+" Ale---------------------------
+let g:ale_enabled = 1
 nnoremap <Leader>a :ALEToggle<CR>
+" For quick startup  if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \}
+"navigate between errors quickly"
+nmap <silent> [a <Plug>(ale_previous_wrap)
+nmap <silent> ]a <Plug>(ale_next_wrap)
