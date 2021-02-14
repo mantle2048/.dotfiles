@@ -14,3 +14,6 @@
     path = vim/pack/vendor/start/ale
     url = https://github.com/dense-analysis/ale.git
     ignore = untracked
+[submodule "jupyter/nbextensions/jupyter-vim-binding"]
+	path = jupyter/nbextensions/jupyter-vim-binding
+	url = https://github.com/lambdalisue/jupyter-vim-binding

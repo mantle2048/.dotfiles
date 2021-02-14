@@ -13,7 +13,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 #Jupyter notebook
-alias jn-nb="jupyter notebook --no-browser"
+
+#Anaconda
+alias sc='source activate'
 
 # other alias
 alias cht=cht.sh

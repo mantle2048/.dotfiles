@@ -1,0 +1,11 @@
+{
+  "load_extensions": {
+    "nbextensions_configurator/config_menu/main": true,
+    "jupyter-vim-binding/vim_binding": true
+  },
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  }
+}
