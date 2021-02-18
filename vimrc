@@ -13,6 +13,19 @@ set nocompatible
 
 " Turn on syntax highlighting.
 syntax on
+" highlight current line, but only in active window
+augroup CursorLineOnlyInActiveWindow
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
+
+filetype plugin indent on " enable file type detection
+set autoindent
+
+"---------------------
+"" Basic editing config
+"---------------------
 
 " Disable the default Vim startup message.
 set shortmess+=I
@@ -27,6 +40,8 @@ set number
 " jump up or down to a particular line, by {count}k to go up or {count}j to go
 " down.
 set relativenumber
+
+set showcmd " show command in bottom bar
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
@@ -47,11 +62,77 @@ set hidden
 " This setting makes search case-insensitive when all characters in the string
 " being searched are lowercase. However, the search becomes case-sensitive if
 " it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
+"
+set incsearch " Enable searching as you type, rather than waiting till you press enter.
+set hlsearch " highlight search
+set ignorecase " Ignore case in searches by default
+set smartcase  " But make it case sensitive if an uppercase is entered
 
-" Enable searching as you type, rather than waiting till you press enter.
-set incsearch
+" Ignore files for completion
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+
+
+" Ignore files for completion
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+
+set listchars=tab:>>,nbsp:~ " set list to see tabs and non-breakable spaces
+
+set linebreak " Have lines wrap instead of continue off-screen
+
+set scrolloff=12 " show lines above and below cursor (when possible)
+
+set noshowmode " hide mode
+
+set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
+
+set lazyredraw " skip redrawing screen in some cases
+
+" set autochdir " automatically set current directory to directory of last opened file
+
+set history=8192 " more history
+
+set nojoinspaces " suppress inserting two spaces between sentences
+
+" tab completion for files/buffers
+set wildmode=longest,list
+set wildmenu
+set mouse+=a " enable mouse mode (scrolling, selection, etc)
+
+" Enable mouse support. You should avoid relying on this too much, but it can
+" sometimes be convenient.
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+
+
+" Ignore files for completion
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+
+" Maintain undo history between sessions`
+set undofile
+set undodir=~/.dotfiles/.vim/undodir
+
+
+" Folding
+set nofoldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+" nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
+hi Folded ctermbg=242
+" This is especially useful for me since I spend my days in Python.
+" Other acceptable values are marker, manual, expr, syntax, diff.
+" Run :help foldmethod to find out what each of those do.
+
+
+
+"--------------------
+"" Misc configurations
+"--------------------
+
 
 " Unbind some useless/annoying default key bindings.
 map <C-a> <Nop>
@@ -61,15 +142,9 @@ nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-set mouse+=a
-
-set ts=4 shiftwidth=4
-
-set expandtab
-
-set autoindent
+" open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
@@ -97,28 +172,57 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
 
-" Maintain undo history between sessions`
-set undofile
-set undodir=~/.dotfiles/.vim/undodir
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
+
+" (Shift)Tab (de)indents code
+vnoremap <Tab> >
+vnoremap <S-Tab> <
+
+
+" Search results centered please
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
 
 "quick move between tabs"
-"nnoremap <C-Left> :tabprevious<CR>"
-"nnoremap <C-Right> :tabnext<CR>"
+nnoremap <C-Left> :tabprevious<CR>"
+nnoremap <C-Right> :tabnext<CR>"
 
 "fast insert a blank line in current line"
 nnoremap <CR> o<Esc>
+
+" toggle relative numbering
+nnoremap <C-n> :set rnu!<CR>
+
+
+
 "---------------------
 " Plugin configuration
 "---------------------
 
 " nerdtree
 nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
+" nnoremap <Leader>f :NERDTreeFind<CR>
 
 " Ale---------------------------
 let g:ale_enabled = 1
 nnoremap <Leader>a :ALEToggle<CR>
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 " For quick startup  if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
@@ -142,3 +246,92 @@ let g:ctrlp_show_hidden = 1
 " buffergator
 let g:buffergator_suppress_keymaps = 1
 nnoremap <Leader>b :BuffergatorToggle<CR>
+
+" python-syntax
+let g:python_highlight_all = 1
+
+
+"Lightline
+" --INSERT-- is unncessary because of lightline
+
+let g:lightline = {
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
+\   'right': [['lineinfo'], ['percent' ],
+\             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok', 'filetype', 'fileencoding']]
+\ },
+\ 'component_function': {
+\   'filename': 'LightlineFilename',
+\ },
+\ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+
+function! LightlineFilename()
+    return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
+
+" let g:lightline = {
+" \ 'active': {
+" \   'left': [['mode', 'paste'], ['filename', 'modified']],
+" \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+" \ },
+" \ 'component_function': {
+" \   'filename': 'LightlineFilename',
+" \ },
+" \ 'component_expand': {
+" \   'linter_warnings': 'LightlineLinterWarnings',
+" \   'linter_errors': 'LightlineLinterErrors',
+" \   'linter_ok': 'LightlineLinterOK'
+" \ },
+" \ 'component_type': {
+" \   'readonly': 'error',
+" \   'linter_warnings': 'warning',
+" \   'linter_errors': 'error'
+" \ },
+" \ }
+"
+" function! LightlineLinterWarnings() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+" return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+" endfunction
+"
+" function! LightlineLinterErrors() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+" return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+" endfunction
+"
+" function! LightlineLinterOK() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+"     return l:counts.total == 0 ? '✓ ' : ''
+" endfunction
+"
+"
+" augroup LightLineOnALE
+"     autocmd!
+"     autocmd User ALEFixPre   call lightline#update()
+"     autocmd User ALEFixPost  call lightline#update()
+"     autocmd User ALELintPre  call lightline#update()
+"     autocmd User ALELintPost call lightline#update()
+" augroup end

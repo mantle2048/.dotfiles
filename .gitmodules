@@ -18,6 +18,16 @@
 	path = jupyter/nbextensions/jupyter-vim-binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
 [submodule "vim/bundle/vim-buffergator"]
-	path = /home/yan/.dotfiles/vim/pack/vendor/start/vim-buffergator
+	path = vim/pack/vendor/start/vim-buffergator
 	url = https://github.com/jeetsukumaran/vim-buffergator
     ignore = untracked
+[submodule "vim/bundle/python-syntax"]
+	path = vim/pack/vendor/start/python-syntax
+	url = https://github.com/vim-python/python-syntax
+    ignore = untracked
+[submodule "vim/bundle/lightline.vim"]
+	path = vim/pack/vendor/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/bundle/lightline-ale"]
+	path = vim/pack/vendor/start/lightline-ale
+	url = https://github.com/maximbaz/lightline-ale
