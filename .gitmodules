@@ -17,3 +17,7 @@
 [submodule "jupyter/nbextensions/jupyter-vim-binding"]
 	path = jupyter/nbextensions/jupyter-vim-binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
+[submodule "vim/bundle/vim-buffergator"]
+	path = /home/yan/.dotfiles/vim/pack/vendor/start/vim-buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator
+    ignore = untracked

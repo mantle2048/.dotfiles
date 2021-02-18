@@ -99,12 +99,12 @@ nnoremap <C-l> <C-w>l
 
 
 " Maintain undo history between sessions`
-set undofile 
+set undofile
 set undodir=~/.dotfiles/.vim/undodir
 
 "quick move between tabs"
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+"nnoremap <C-Left> :tabprevious<CR>"
+"nnoremap <C-Right> :tabnext<CR>"
 
 "fast insert a blank line in current line"
 nnoremap <CR> o<Esc>
@@ -119,14 +119,26 @@ nnoremap <Leader>f :NERDTreeFind<CR>
 " Ale---------------------------
 let g:ale_enabled = 1
 nnoremap <Leader>a :ALEToggle<CR>
+
 " For quick startup  if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
+
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \}
+
 "navigate between errors quickly"
 nmap <silent> [a <Plug>(ale_previous_wrap)
 nmap <silent> ]a <Plug>(ale_next_wrap)
+
+" ctrlp
+nnoremap ; :CtrlPBuffer<CR>
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_show_hidden = 1
+
+" buffergator
+let g:buffergator_suppress_keymaps = 1
+nnoremap <Leader>b :BuffergatorToggle<CR>

@@ -2,6 +2,7 @@
   "NotebookApp": {
     "nbserver_extensions": {
       "jupyter_nbextensions_configurator": true
-    }
+    },
+    "password": "argon2:$argon2id$v=19$m=10240,t=10,p=8$9YBRLMWqG03S/ptyTnJicg$Gyrkv97Iheen/nji/rPJqQ"
   }
 }
