@@ -28,6 +28,24 @@
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/pack/vendor/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+    ignore = untracked
 [submodule "vim/bundle/lightline-ale"]
 	path = vim/pack/vendor/start/lightline-ale
 	url = https://github.com/maximbaz/lightline-ale
+    ignore = untracked
+[submodule "vim/bundle/vim-argwrap"]
+	path = vim/pack/vendor/start/vim-argwrap
+	url = https://github.com/FooSoft/vim-argwrap
+    ignore = untracked
+[submodule "vim/bundle/incsearch.vim"]
+	path = vim/pack/vendor/start/incsearch.vim
+	url = https://github.com/haya14busa/incsearch.vim
+    ignore = untracked
+[submodule "incsearch-easymotion.vim"]
+	path = vim/pack/vendor/start/incsearch-easymotion.vim
+	url = https://github.com/haya14busa/incsearch-easymotion.vim
+    ignore = untracked
+[submodule "vim/bundle/vim-easymotion"]
+	path = vim/pack/vendor/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+    ignore = untracked

@@ -217,16 +217,17 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>f :NERDTreeFind<CR>
 
 " Ale---------------------------
-let g:ale_enabled = 1
+" let g:ale_enabled = 1
+"
+" For quick startup  if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+
 nnoremap <Leader>a :ALEToggle<CR>
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
-
-" For quick startup  if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
@@ -286,52 +287,18 @@ function! LightlineFilename()
     return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
-" let g:lightline = {
-" \ 'active': {
-" \   'left': [['mode', 'paste'], ['filename', 'modified']],
-" \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
-" \ },
-" \ 'component_function': {
-" \   'filename': 'LightlineFilename',
-" \ },
-" \ 'component_expand': {
-" \   'linter_warnings': 'LightlineLinterWarnings',
-" \   'linter_errors': 'LightlineLinterErrors',
-" \   'linter_ok': 'LightlineLinterOK'
-" \ },
-" \ 'component_type': {
-" \   'readonly': 'error',
-" \   'linter_warnings': 'warning',
-" \   'linter_errors': 'error'
-" \ },
-" \ }
-"
-" function! LightlineLinterWarnings() abort
-"     let l:counts = ale#statusline#Count(bufnr(''))
-"     let l:all_errors = l:counts.error + l:counts.style_error
-"     let l:all_non_errors = l:counts.total - l:all_errors
-" return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
-" endfunction
-"
-" function! LightlineLinterErrors() abort
-"     let l:counts = ale#statusline#Count(bufnr(''))
-"     let l:all_errors = l:counts.error + l:counts.style_error
-"     let l:all_non_errors = l:counts.total - l:all_errors
-" return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
-" endfunction
-"
-" function! LightlineLinterOK() abort
-"     let l:counts = ale#statusline#Count(bufnr(''))
-"     let l:all_errors = l:counts.error + l:counts.style_error
-"     let l:all_non_errors = l:counts.total - l:all_errors
-"     return l:counts.total == 0 ? '✓ ' : ''
-" endfunction
-"
-"
-" augroup LightLineOnALE
-"     autocmd!
-"     autocmd User ALEFixPre   call lightline#update()
-"     autocmd User ALEFixPost  call lightline#update()
-"     autocmd User ALELintPre  call lightline#update()
-"     autocmd User ALELintPost call lightline#update()
-" augroup end
+" easymotion
+map <Space> <Plug>(easymotion-prefix)
+
+" incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+ " incsearch-easymotion
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
+
+" argwrap
+nnoremap <Leader>w :ArgWrap<CR>
