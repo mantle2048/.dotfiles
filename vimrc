@@ -128,7 +128,7 @@ hi Folded ctermbg=242
 " Run :help foldmethod to find out what each of those do.
 
 
-
+nnoremap <F9> :!clear && "%:p"<Enter>
 "--------------------
 "" Misc configurations
 "--------------------
@@ -217,7 +217,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>f :NERDTreeFind<CR>
 
 " Ale---------------------------
-" let g:ale_enabled = 1
+let g:ale_enabled = 0
 "
 " For quick startup  if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
@@ -230,7 +230,7 @@ highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \}

@@ -49,3 +49,7 @@
 	path = vim/pack/vendor/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
     ignore = untracked
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty # ignore dirty commits in the submodule

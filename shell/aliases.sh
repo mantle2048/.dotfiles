@@ -16,6 +16,7 @@ alias rm='rm -i'
 
 #Anaconda
 alias sc='source activate'
+alias sd='conda deactivate'
 
 # other alias
 alias cht=cht.sh

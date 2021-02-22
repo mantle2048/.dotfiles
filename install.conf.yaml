@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.bashrc:
+    ~/.dotfiles: ''
+    ~/.gitconfig:
+    ~/.inputrc:
+    ~/.jupyter/jupyter_notebook_config.py: jupyter/jupyter_notebook_config.py
+    ~/.jupyter/nbconfig/notebook.json: jupyter/nbconfig/notebook.json
+    ~/.jupyter/nbextensions: jupyter/nbextensions
+    ~/.pythonrc:
+    ~/.shell:
+    ~/.tmux.conf:
+    ~/.vim:
+    ~/.vimrc:
+
+- create:
+    - ~/.vim/undo-history
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
