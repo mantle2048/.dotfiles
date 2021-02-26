@@ -206,6 +206,8 @@ nnoremap <CR> o<Esc>
 " toggle relative numbering
 nnoremap <C-n> :set rnu!<CR>
 
+" quick switch between paste mode
+set pastetoggle=<F3>
 
 
 "---------------------
@@ -220,17 +222,17 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 let g:ale_enabled = 0
 "
 " For quick startup  if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 
 nnoremap <Leader>a :ALEToggle<CR>
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
+" let g:ale_sign_warning = '▲'
+" let g:ale_sign_error = '✗'
+" highlight link ALEWarningSign String
+" highlight link ALEErrorSign Title
 
 " Set this variable to 1 to fix files when you save them.
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \}
