@@ -259,12 +259,13 @@ let g:python_highlight_all = 1
 
 let g:lightline = {
 \ 'active': {
-\   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ],
+\   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified', 'gitbranch'] ],
 \   'right': [['lineinfo'], ['percent' ],
 \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok', 'filetype', 'fileencoding']]
 \ },
 \ 'component_function': {
 \   'filename': 'LightlineFilename',
+\   'gitbranch': 'FugitiveHead'
 \ },
 \ }
 
@@ -304,3 +305,6 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 
 " argwrap
 nnoremap <Leader>w :ArgWrap<CR>
+
+" fugitive
+" set tags^=.git/tags;~
