@@ -56,3 +56,8 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+    ignore = untracked
+[submodule "vim/bundle/vim-cool"]
+	path = vim/pack/vendor/start/vim-cool
+	url = https://github.com/romainl/vim-cool
+    ignore = untracked
