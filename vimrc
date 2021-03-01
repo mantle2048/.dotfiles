@@ -96,7 +96,7 @@ set nojoinspaces " suppress inserting two spaces between sentences
 " tab completion for files/buffers
 set wildmode=longest,list
 set wildmenu
-set mouse+=a " enable mouse mode (scrolling, selection, etc)
+" set mouse+=a " enable mouse mode (scrolling, selection, etc)
 
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
