@@ -307,4 +307,7 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 nnoremap <Leader>w :ArgWrap<CR>
 
 " fugitive
-" set tags^=.git/tags;~
+set tags^=.git/tags;~
+
+" vim-cool |  Disables highlight when search is done
+let g:CoolTotalMatches = 1
