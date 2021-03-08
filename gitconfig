@@ -5,3 +5,4 @@
 	editor = vim
 [alias]
 	lg = log --all --graph --decorate --oneline
+    ctags = ! "ctg() { trap \"rm -f .git/tags.$$\" EXIT; ctags --tag-relative -Rf.git/tags.$$ --exclude=.git; mv .git/tags.$$ .git/tags; }; ctg"

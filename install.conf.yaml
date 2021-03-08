@@ -20,7 +20,7 @@
     ~/.vimrc:
 
 - create:
-    - ~/.vim/undo-history
+    - ~/.vim/undor
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
