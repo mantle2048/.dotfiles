@@ -64,3 +64,4 @@
 [submodule "vim/bundle/vim-mundo"]
 	path = vim/pack/vendor/start/vim-mundo
 	url = https://github.com/simnalamburt/vim-mundo
+    ignore = untracked
