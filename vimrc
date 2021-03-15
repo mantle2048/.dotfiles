@@ -209,7 +209,8 @@ nnoremap <C-n> :set rnu!<CR>
 " quick switch between paste mode
 set pastetoggle=<F3>
 
-
+" ctags for multi matches
+nnoremap <C-]> g<C-]>
 "---------------------
 " Plugin configuration
 "---------------------
@@ -307,10 +308,22 @@ map zg/ <Plug>(incsearch-easymotion-stay)
 nnoremap <Leader>w :ArgWrap<CR>
 
 " fugitive
-set tags^=./.git/tags;
+set tags=./tags;/
+" set tags^=.git/tags;~
 
 " vim-cool |  Disables highlight when search is done
 let g:CoolTotalMatches = 1
 
 " u    -- Undo Tree toggle show
 nnoremap <Leader>u :MundoToggle<CR>
+
+
+"---------------------
+" Local customizations
+"---------------------
+
+" local customizations in ~/.vimrc_local
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif

@@ -21,6 +21,7 @@ alias sd='conda deactivate'
 # other alias
 alias cht=cht.sh
 alias gs='git status'
+alias nnn='nnn -de'
 
 
 # Create a directory and cd into it
@@ -54,4 +55,11 @@ up()
         done
     fi
     cd "${cdir}"
+}
+
+# Execute a command in a specific directory
+xin() {
+    (
+        cd "${1}" && shift && "${@}"
+    )
 }
