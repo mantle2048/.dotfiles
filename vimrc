@@ -152,10 +152,10 @@ set splitright
 " bad habit. The former is enforceable through a .vimrc, while we don't know
 " how to prevent the latter.
 " Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
+" nnoremap <Left>  :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up>    :echoe "Use k"<CR>
+" nnoremap <Down>  :echoe "Use j"<CR>
 
 " ...and in insert mode
 inoremap <Left>  <ESC>:echoe "Use h"<CR>
@@ -171,6 +171,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <Down> <C-w>j
+nnoremap <Up> <C-w>k
+nnoremap <Left> <C-w>h
+nnoremap <Right> <C-w>l
 
 " move vertically by visual line
 nnoremap j gj
@@ -211,6 +215,11 @@ set pastetoggle=<F3>
 
 " ctags for multi matches
 nnoremap <C-]> g<C-]>
+
+" for copy and paste in different terminal | Awesome!!!!
+vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
+nmap <leader>p :r! cat /tmp/vitmp<CR>
+
 "---------------------
 " Plugin configuration
 "---------------------
