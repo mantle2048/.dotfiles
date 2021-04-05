@@ -6,6 +6,8 @@
 [alias]
 	lg = log --all --graph --decorate --oneline
     ctags = ! "ctg() { trap \"rm -f .git/tags.$$\" EXIT; ctags --tag-relative -Rf.git/tags.$$ --exclude=.git; mv .git/tags.$$ .git/tags; }; ctg"
+    cleanall = clean -fdx # this is dangerous, so it's intentionally long to type
+    update-submodules = submodule update --init --recursive
 
 [core]
 	excludesfile = ~/.gitignore_global
