@@ -27,7 +27,7 @@
     ignore = untracked
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/pack/vendor/start/lightline.vim
-    url = git@github.com:maximbaz/lightline-ale.git
+    url = git@github.com:itchyny/lightline.vim.git
     ignore = untracked
 [submodule "vim/bundle/lightline-ale"]
 	path = vim/pack/vendor/start/lightline-ale
