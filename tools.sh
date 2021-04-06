@@ -4,3 +4,4 @@ tmux
 nnn
 cht.sh
 fdfind
+nnn
