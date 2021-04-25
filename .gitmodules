@@ -1,67 +1,67 @@
 [submodule "vim/bundle/ctrlp.vim"]
     path = vim/pack/vendor/start/ctrlp.vim
-    url = git@github.com:ctrlpvim/ctrlp.vim.git
+    url = https://github.com/ctrlpvim/ctrlp.vim
     ignore = untracked
 [submodule "vim/bundle/nerdtree"]
     path = vim/pack/vendor/start/nerdtree
-    url = git@github.com:preservim/nerdtree.git
+    url = https://github.com/scrooloose/nerdtree
     ignore = untracked
 [submodule "vim/bundle/vim-bundler"]
     path = vim/pack/vendor/start/vim-bundler
-    url = git@github.com:tpope/vim-bundler.git
+    url = https://github.com/tpope/vim-bundler.git
     ignore = untracked
 [submodule "vim/bundle/ale"]
     path = vim/pack/vendor/start/ale
-    url = git@github.com:dense-analysis/ale.git
+    url = https://github.com/dense-analysis/ale.git
     ignore = untracked
 [submodule "jupyter/nbextensions/jupyter-vim-binding"]
 	path = jupyter/nbextensions/jupyter-vim-binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
 [submodule "vim/bundle/vim-buffergator"]
 	path = vim/pack/vendor/start/vim-buffergator
-    url = git@github.com:jeetsukumaran/vim-buffergator.git
+	url = https://github.com/jeetsukumaran/vim-buffergator
     ignore = untracked
 [submodule "vim/bundle/python-syntax"]
 	path = vim/pack/vendor/start/python-syntax
-    url = git@github.com:vim-python/python-syntax.git
+	url = https://github.com/vim-python/python-syntax
     ignore = untracked
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/pack/vendor/start/lightline.vim
-    url = git@github.com:itchyny/lightline.vim.git
+	url = https://github.com/itchyny/lightline.vim
     ignore = untracked
 [submodule "vim/bundle/lightline-ale"]
 	path = vim/pack/vendor/start/lightline-ale
-    url = git@github.com:maximbaz/lightline-ale.git
+	url = https://github.com/maximbaz/lightline-ale
     ignore = untracked
 [submodule "vim/bundle/vim-argwrap"]
 	path = vim/pack/vendor/start/vim-argwrap
-    url = git@github.com:FooSoft/vim-argwrap.git
+	url = https://github.com/FooSoft/vim-argwrap
     ignore = untracked
 [submodule "vim/bundle/incsearch.vim"]
 	path = vim/pack/vendor/start/incsearch.vim
-    url = git@github.com:haya14busa/incsearch.vim.git
+	url = https://github.com/haya14busa/incsearch.vim
     ignore = untracked
 [submodule "incsearch-easymotion.vim"]
 	path = vim/pack/vendor/start/incsearch-easymotion.vim
-    url = git@github.com:haya14busa/incsearch-easymotion.vim.git
+	url = https://github.com/haya14busa/incsearch-easymotion.vim
     ignore = untracked
 [submodule "vim/bundle/vim-easymotion"]
 	path = vim/pack/vendor/start/vim-easymotion
-    url = git@github.com:easymotion/vim-easymotion.git
+	url = https://github.com/easymotion/vim-easymotion
     ignore = untracked
 [submodule "dotbot"]
 	path = dotbot
-    url = git@github.com:anishathalye/dotbot.git
+	url = https://github.com/anishathalye/dotbot
 	ignore = dirty # ignore dirty commits in the submodule
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/pack/vendor/start/vim-fugitive
-    url = git@github.com:tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
     ignore = untracked
 [submodule "vim/bundle/vim-cool"]
 	path = vim/pack/vendor/start/vim-cool
-    url = git@github.com:romainl/vim-cool.git
+	url = https://github.com/romainl/vim-cool
     ignore = untracked
 [submodule "vim/bundle/vim-mundo"]
 	path = vim/pack/vendor/start/vim-mundo
-    url = git@github.com:simnalamburt/vim-mundo.git
+	url = https://github.com/simnalamburt/vim-mundo
     ignore = untracked
