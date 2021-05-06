@@ -97,6 +97,11 @@ set nojoinspaces " suppress inserting two spaces between sentences
 set wildmode=longest,list
 set wildmenu
 " set mouse+=a " enable mouse mode (scrolling, selection, etc)
+"
+" if you want to use mouse to resize split window please use the following two
+" lines( That's really cool! )
+" set mouse=n
+" set ttymouse=xterm2
 
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
@@ -217,7 +222,7 @@ set pastetoggle=<F3>
 nnoremap <C-]> g<C-]>
 
 " for copy and paste in different terminal | Awesome!!!!
-vmap <leader>y :w! /tmp/vitmp<CR>                                                                   
+vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
 "---------------------
