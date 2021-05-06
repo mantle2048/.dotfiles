@@ -11,6 +11,7 @@
     ~/.dotfiles: ''
     ~/.gitconfig:
     ~/.gitignore_global:
+    ~/.bash_profile:
     ~/.inputrc:
     ~/.ipython/profile_default/ipython_config.py: ipython/profile_default/ipython_config.py
     ~/.ipython/profile_default/ipython_kernel_config.py: ipython/profile_default/ipython_kernel_config.py
