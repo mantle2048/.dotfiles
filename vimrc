@@ -354,6 +354,10 @@ if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
 
+" vim-signify
+let g:signify_disable_by_default = 1
+set updatetime=100
+nnoremap <Leader>s :SignifyToggle<CR>
 
 "---------------------
 " Local customizations
