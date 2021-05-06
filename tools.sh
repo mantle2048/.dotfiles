@@ -5,3 +5,4 @@ nnn
 cht.sh
 fdfind
 nnn
+ctags

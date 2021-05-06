@@ -65,3 +65,7 @@
 	path = vim/pack/vendor/start/vim-mundo
 	url = https://github.com/simnalamburt/vim-mundo
     ignore = untracked
+[submodule "vim/bundle/vim-gutentags"]
+	path = vim/pack/vendor/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
+    ignore = untracked
