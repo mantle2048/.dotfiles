@@ -1,7 +1,9 @@
 {
   "load_extensions": {
     "nbextensions_configurator/config_menu/main": true,
-    "jupyter-vim-binding/vim_binding": true
+    "jupyter-vim-binding/vim_binding": true,
+    "contrib_nbextensions_help_item/main": true,
+    "hide_input/main": false
   },
   "Cell": {
     "cm_config": {
