@@ -73,3 +73,7 @@
 	path = vim/pack/vendor/start/vim-signify
 	url = https://github.com/mhinz/vim-signify
     ignore = untracked
+[submodule "vim/pack/vendor/start/vim-bracketed-paste"]
+	path = vim/pack/vendor/start/vim-bracketed-paste
+	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
+    ignore = untracked

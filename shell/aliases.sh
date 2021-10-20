@@ -22,6 +22,8 @@ alias sd='conda deactivate'
 alias cht=cht.sh
 alias gs='git status'
 alias nnn='nnn -de'
+alias data='cd /data3/nisyan/'
+alias home='cd ~'
 
 
 # Create a directory and cd into it
