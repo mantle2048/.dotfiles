@@ -381,8 +381,21 @@ nnoremap <Leader>s :SignifyToggle<CR>
 " Local customizations
 "---------------------
 
+"---------------------
 " local customizations in ~/.vimrc_local
+"---------------------
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
+
+"---------------------
+"  automatically complete parentheses (that's cool!!)
+"---------------------
+inoremap { {}<Esc>i
+inoremap {<CR> {<CR>}<Esc>O<tab>
+inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
+inoremap < <><Esc>i
+" inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
