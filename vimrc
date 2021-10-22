@@ -213,7 +213,15 @@ nnoremap <C-Right> :tabnext<CR>"
 nnoremap <CR> o<Esc>
 
 " toggle relative numbering
-nnoremap <C-n> :set rnu!<CR>
+" nnoremap <C-n> :set rnu!<CR>
+nnoremap <silent> <C-n> :call ToggleNumber()<CR>
+fun! ToggleNumber() "{{{
+	if exists('+relativenumber')
+		:exec &nu==&rnu? "setl nu!" : "setl rnu!"
+	else
+		setl nu!
+	endif
+endf "}}}
 
 " quick switch between paste mode
 set pastetoggle=<F3>
