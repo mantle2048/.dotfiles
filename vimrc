@@ -400,13 +400,13 @@ endif
 "---------------------
 "  automatically complete parentheses (that's cool!!)
 "---------------------
-inoremap { {}<Esc>i
-inoremap {<CR> {<CR>}<Esc>O<tab>
-inoremap [ []<Esc>i
-inoremap ( ()<Esc>i
-inoremap < <><Esc>i
-" inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
+" inoremap { {}<Esc>i
+" inoremap {<CR> {<CR>}<Esc>O<tab>
+" inoremap [ []<Esc>i
+" inoremap ( ()<Esc>i
+" inoremap < <><Esc>i
+" " inoremap ' ''<Esc>i
+" inoremap " ""<Esc>i
 
 
 "---------------------
