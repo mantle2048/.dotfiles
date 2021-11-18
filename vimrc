@@ -398,18 +398,6 @@ if filereadable($LOCALFILE)
 endif
 
 "---------------------
-"  automatically complete parentheses (that's cool!!)
-"---------------------
-" inoremap { {}<Esc>i
-" inoremap {<CR> {<CR>}<Esc>O<tab>
-" inoremap [ []<Esc>i
-" inoremap ( ()<Esc>i
-" inoremap < <><Esc>i
-" " inoremap ' ''<Esc>i
-" inoremap " ""<Esc>i
-
-
-"---------------------
 "  quick insert breakpoint in Vim-python
 "---------------------
 func! s:SetBreakpoint()
@@ -424,3 +412,24 @@ func! s:ToggleBreakpoint()
     if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
 endf
 nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>
+
+"---------------------
+"  Using ripgrep with VIM CtrlP plugin
+"---------------------
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_clear_cache_on_exit = 0
+endif
+
+
+"---------------------
+" ag / ack.vim
+"---------------------
+command -nargs=+ Gag Gcd | Ack! <args>
+nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif

@@ -77,3 +77,7 @@
 	path = vim/pack/vendor/start/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
     ignore = untracked
+[submodule "vim/pack/vendor/start/ack.vim"]
+	path = vim/pack/vendor/start/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+    ignore = untracked
