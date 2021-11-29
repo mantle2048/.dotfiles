@@ -81,3 +81,7 @@
 	path = vim/pack/vendor/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
     ignore = untracked
+[submodule "vim/pack/vendor/start/wsl-copy"]
+	path = vim/pack/vendor/start/wsl-copy
+	url = https://github.com/christianfosli/wsl-copy.git
+    ignore = untracked
