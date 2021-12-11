@@ -228,6 +228,7 @@ set pastetoggle=<F3>
 
 " ctags for multi matches
 nnoremap <C-]> g<C-]>
+nnoremap <C-W>] <C-W>g]
 
 " for copy and paste in different terminal | Awesome!!!!
 vmap <leader>y :w! /tmp/vitmp<CR>
