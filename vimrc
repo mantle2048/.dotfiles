@@ -434,3 +434,9 @@ nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+
+"---------------------
+" vim-easyescape-plus
+"---------------------
+let g:easyescape_string = "jk"
+let g:easyescape_timeout = 100

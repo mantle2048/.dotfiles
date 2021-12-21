@@ -85,3 +85,7 @@
 	path = vim/pack/vendor/start/wsl-copy
 	url = https://github.com/christianfosli/wsl-copy.git
     ignore = untracked
+[submodule "vim/pack/vendor/start/vim-easyescape-plus"]
+	path = vim/pack/vendor/start/vim-easyescape-plus
+	url = https://github.com/hyhugh/vim-easyescape-plus
+    ignore = untracked
