@@ -234,6 +234,10 @@ nnoremap <C-W>] <C-W>g]
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
+" yank part of the line
+nnoremap yu y$
+nnoremap yt y0
+
 "---------------------
 " Plugin configuration
 "---------------------
