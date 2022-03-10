@@ -238,13 +238,15 @@ nmap <leader>p :r! cat /tmp/vitmp<CR>
 nnoremap yu y$
 nnoremap yt y0
 
+" swap LHS and RHS
+nnoremap <leader>z :%s/\([^=]*\)\s\+=\s\+\([^;]*\)/\2 = \1<CR>
+
 "---------------------
 " Plugin configuration
 "---------------------
 
 " nerdtree
 nnoremap <Leader>n :NERDTreeToggle<CR>
-" nnoremap <Leader>f :NERDTreeFind<CR>
 
 " Ale---------------------------
 let g:ale_enabled = 0
