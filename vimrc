@@ -235,11 +235,21 @@ vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
 " yank part of the line
-nnoremap yu y$
-nnoremap yt y0
+" nnoremap yu y$
+" nnoremap yt y0
 
 " swap LHS and RHS
-nnoremap <leader>z :%s/\([^=]*\)\s\+=\s\+\([^;]*\)/\2 = \1<CR>
+" nnoremap <leader>z :s/\([^=]*\)\s\+=\s\+\([^;]*\)/\2 = \1<CR>
+
+"---------------------
+" Macro configuration
+"---------------------
+
+" join two equations
+let @j="^jf=wDkA, \<Esc>pj^dt=kt=i, \<Esc>pxjddk^"
+
+" Swap LHS and RHS
+let @z= "^\"0dt=^wD^i \<Esc>pa \<Esc>A\<Esc>\"0px^hx"
 
 "---------------------
 " Plugin configuration
