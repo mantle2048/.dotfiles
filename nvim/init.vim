@@ -297,9 +297,11 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'FooSoft/vim-argwrap'
 Plug 'ojroques/vim-oscyank'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'justinmk/vim-sneak'
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-unimpaired'
 
 " Initialize plugin system
@@ -315,16 +317,16 @@ map <space>F <Plug>Sneak_S
 nnoremap <Leader>w :ArgWrap<CR>
 " }}}
 
+" Plug 'ojroques/vim-oscyank' {{{
+vnoremap <leader>c :OSCYank<CR>
+" }}}
+
 " Plug glephir/dashboard-nvim {{{
 let g:dashboard_default_executive ='telescope'
 let g:dashboard_custom_shortcut={
-\ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC f h',
-\ 'find_file'          : 'SPC f f',
-\ 'new_file'           : 'SPC n f',
-\ 'change_colorscheme' : 'SPC c t',
-\ 'find_word'          : 'SPC f g',
-\ 'book_marks'         : 'SPC f m',
+\ 'find_file'          : '<leader> p',
+\ 'find_word'          : '<leader> fw',
+\ 'book_marks'         : '<leader> jm',
 \ }
 let s:header = [
     \ '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
@@ -469,7 +471,6 @@ nnoremap <leader>reg :Telescope registers theme=ivy<cr>
 
 "}}}
 
-
 " nvim-treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -481,7 +482,7 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true,
-    disable = { "" }, -- list of language that will be disabled
+    disable = { "vim" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true
   },
   indent = { enable = true, disable = { "yaml" } },
@@ -493,6 +494,7 @@ EOF
 " }}}
 
 
+" Plug 'hoob3rt/lualine.nvim' {{{
 lua << EOF
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
@@ -562,7 +564,7 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "dracula",
-		component_separators = { left = "", right = "" },
+        component_separators = { left = '|', right = '|'},
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
@@ -571,38 +573,150 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {"filename"},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_y = { location },
-		lualine_z = { progress },
+		lualine_y = { "location" },
+		lualine_z = { "progress" },
 	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+    },
 	tabline = {},
 	extensions = {},
 })
+EOF
+" }}}
 
+" Plug 'windwp/nvim-autopairs' {{{
+lua << EOF
+-- Setup nvim-cmp.
+local status_ok, npairs = pcall(require, "nvim-autopairs")
+if not status_ok then
+  return
+end
+
+npairs.setup {
+  check_ts = true,
+  ts_config = {
+    lua = { "string", "source" },
+    javascript = { "string", "template_string" },
+    java = false,
+  },
+  disable_filetype = { "TelescopePrompt", "spectre_panel" },
+  fast_wrap = {
+    map = "<M-e>",
+    chars = { "{", "[", "(", '"', "'" },
+    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+    offset = 0, -- Offset from pattern match
+    end_key = "$",
+    keys = "qwertyuiopzxcvbnmasdfghjkl",
+    check_comma = true,
+    highlight = "PmenuSel",
+    highlight_grey = "LineNr",
+  },
+}
 EOF
 
-" Plug 'hoob3rt/lualine.nvim' {{{
-" lua << EOF
-" require('plenary.reload').reload_module('lualine', true)
-" require('lualine').setup({
-"   options = {
-"     theme = 'dracula',
-"     disabled_types = { 'NvimTree' }
-"   },
-"   sections = {
-"     lualine_x = {},
-"     -- lualine_y = {},
-"     -- lualine_z = {},
-"   }
-" })
-" EOF
+" 'akinsho/nvim-bufferline.lua' {{{
+" https://github.com/girishji/config/blob/main/nvim/lua/user/bufferline.lua
+lua << EOF
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+  return
+end
+
+local color1 = 1
+local color2 = 2
+local color3 = 3
+
+bufferline.setup {
+  options = {
+    numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    -- NOTE: this plugin is designed with this icon in mind,
+    -- and so changing this is NOT recommended, this is intended
+    -- as an escape hatch for people who cannot bear it for whatever reason
+    indicator_icon = "▎",
+    buffer_close_icon = "",
+    modified_icon = "●",
+    close_icon = "",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
+    max_name_length = 30,
+    max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
+    tab_size = 18,
+    diagnostics = false, -- | "nvim_lsp" | "coc",
+    diagnostics_update_in_insert = false,
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      return "("..count..")"
+    end,
+    offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
+    show_buffer_icons = true,
+    show_buffer_close_icons = true,
+    show_close_icon = false,
+    show_tab_indicators = true,
+    persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+    -- can also be a table containing 2 custom separators
+    -- [focused and unfocused]. eg: { '|', '|' }
+    separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = true,
+    always_show_bufferline = true,
+    -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+    --   -- add custom logic
+    --   return buffer_a.modified > buffer_b.modified
+    -- end
+  },
+  highlights = {
+    fill = {
+    },
+    buffer_selected = {
+      ctermbg = color2,
+    },
+    buffer_visible = {
+      ctermbg = color1,
+    },
+    close_button_selected = {
+      ctermbg = color2,
+    },
+    close_button_visible = {
+      ctermbg = color1,
+    },
+    separator_selected = {
+      ctermbg = color2,
+    },
+    separator_visible = {
+      ctermbg = color1,
+    },
+    indicator_selected = {
+      ctermbg = color2,
+    },
+    indicator_visible = {
+      ctermbg = color1,
+    },
+    modified_selected = {
+      ctermbg = color2,
+    },
+    modified_visible = {
+      ctermbg = color1,
+    },
+  }
+}
+EOF
+
+lua << EOF
+require('bufdel').setup {
+  next = 'cycle',  -- or 'alternate'
+  quit = true,
+}
+EOF
+nnoremap <silent> <space>jj :BufferLinePick<CR>
+nnoremap <silent> <space>l :BufferLineCycleNext<CR>
+nnoremap <silent> <space>h :BufferLineCyclePrev<CR>
+nnoremap <silent> <space><right> :BufferLineMoveNext<CR>
+nnoremap <silent> <space><left> :BufferLineMovePrev<CR>
+nnoremap <space>d :BufDel<CR>
 " }}}
