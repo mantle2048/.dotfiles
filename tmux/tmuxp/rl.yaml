@@ -1,0 +1,36 @@
+session_name: ${NAME}
+start_directory: ${PWD}/ # load session relative to config location (project root).
+shell_command_before:
+- 'source activate RL && clear'
+windows:
+- window_name: Editor
+  focus: true
+  layout: even-horizontal
+  panes:
+    - focus: true
+    - pane
+
+- window_name: Logger
+  layout: main-vertical
+  options:
+    main-pane-width: 72
+  panes:
+    - shell_command:
+      - ipython
+      - import torch
+      - import numpy
+      - import gym
+      - clear
+    - pane
+    - pane
+
+- window_name: Monitor
+  layout: main-vertical
+  options:
+    main-pane-width: 72
+  panes:
+  - pane
+  - shell_command:
+    - gpustat -i
+  - shell_command:
+    - htop
