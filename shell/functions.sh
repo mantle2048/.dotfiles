@@ -83,3 +83,9 @@ ccat() {
         done
     fi
 }
+
+# 快速创建 Tmux RL Session
+tmux_rl() {
+    session_name=$1
+    NAME=$session_name tmuxp load rl
+}

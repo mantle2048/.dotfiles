@@ -25,6 +25,8 @@ alias nnn='nnn -de'
 alias data='cd /data3/nisyan/'
 alias home='cd ~'
 
+# alias vim2nvim
+alias vim='nvim'
 
 # Create a directory and cd into it
 mcd() {

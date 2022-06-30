@@ -279,12 +279,13 @@ nnoremap <silent> <leader><leader> :source $MYVIMRC<CR>
 call plug#begin('~/.dotfiles/vim/plugged')
 " PlugInstall PlugClean PlugUpdate
 
-" Plug 'rmagatti/auto-session'
+Plug 'rmagatti/auto-session'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
 Plug 'glepnir/dashboard-nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'ojroques/nvim-bufdel'
@@ -297,6 +298,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'FooSoft/vim-argwrap'
 Plug 'ojroques/vim-oscyank'
+Plug 'rmagatti/session-lens'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
@@ -322,25 +324,31 @@ vnoremap <leader>c :OSCYank<CR>
 " }}}
 
 " Plug glephir/dashboard-nvim {{{
-let g:dashboard_default_executive ='telescope'
-let g:dashboard_custom_shortcut={
-\ 'find_file'          : '<leader> p',
-\ 'find_word'          : '<leader> fw',
-\ 'book_marks'         : '<leader> jm',
-\ }
-let s:header = [
-    \ '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
-    \ '████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
-    \ '██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
-    \ '██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-    \ '██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
-    \ '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
-    \ '',
-    \ '                 [ @_mantle ]                 ',
-    \ ]
-let s:footer = []
-let g:dashboard_custom_header = s:header
-let g:dashboard_custom_footer = s:footer
+
+" let g:dashboard_default_executive ='telescope'
+" let g:dashboard_custom_shortcut={
+" \ 'find_file'          : '<leader> p',
+" \ 'find_word'          : '<leader> fw',
+" \ 'book_marks'         : '<leader> jm',
+" \ }
+" let s:header = [
+"     \ '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+"     \ '████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+"     \ '██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+"     \ '██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+"     \ '██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+"     \ '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+"     \ '',
+"     \ '                 [ @_mantle ]                 ',
+"     \ ]
+" let s:footer = []
+" let g:dashboard_custom_header = s:header
+" let g:dashboard_custom_footer = s:footer
+
+lua << EOF
+local home = os.getenv('HOME')
+local db = require('dashboard')
+EOF
 " }}}
 
 
@@ -379,9 +387,6 @@ require('telescope').setup {
     file_ignore_patterns = { "yarn.lock" },
     path_display = { "smart" },
     sorting_strategy = "ascending",
-    layout_config = {
-      preview_width = 0.6
-    },
     mappings = {
         n = {
           ["l"] = "select_default",
@@ -402,6 +407,9 @@ require('telescope').setup {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       path_display = { truncate = 3 },
+      layout_config = {
+        preview_width = 0.6
+      },
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
@@ -423,6 +431,9 @@ require('telescope').setup {
       show_all_buffers = true,
       sort_lastused = true,
       theme = "ivy",
+      layout_config = {
+        preview_width = 0.6
+      },
       mappings = {
         n = {
           ["<C-q>"] = "delete_buffer",
@@ -431,27 +442,46 @@ require('telescope').setup {
     },
     find_files = {
       theme = 'ivy',
+      layout_config = {
+        preview_width = 0.6
+      },
       find_command = { "rg", "--ignore", "-L", "--hidden", "--files" }
     },
     grep_string = {
+      layout_config = {
+        preview_width = 0.6
+      },
       theme = 'ivy',
     },
     live_grep = {
+      layout_config = {
+        preview_width = 0.6
+      },
       theme = 'ivy',
     },
     git_status = {
+      layout_config = {
+        preview_width = 0.6
+      },
       theme = 'ivy',
     },
     git_branches = {
+      layout_config = {
+        preview_width = 0.6
+      },
       theme = 'ivy',
     },
     quickfix = {
+      layout_config = {
+        preview_width = 0.6
+      },
       theme = 'ivy',
     },
   }
 }
 require('telescope').load_extension('fzf')
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension("session-lens")
 EOF
 
 nnoremap ; <cmd>Telescope buffers<cr>
@@ -629,7 +659,7 @@ if not status_ok then
   return
 end
 
-local color1 = 1
+local color1 = 4
 local color2 = 2
 local color3 = 3
 
@@ -719,4 +749,95 @@ nnoremap <silent> <space>h :BufferLineCyclePrev<CR>
 nnoremap <silent> <space><right> :BufferLineMoveNext<CR>
 nnoremap <silent> <space><left> :BufferLineMovePrev<CR>
 nnoremap <space>d :BufDel<CR>
+" }}}
+
+" 'indentline.lua' {{{
+lua << EOF
+local status_ok, indent_blankline = pcall(require, "indent_blankline")
+if not status_ok then
+	return
+end
+
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_filetype_exclude = {
+	"help",
+	"startify",
+	"dashboard",
+	"packer",
+	"neogitstatus",
+	"NvimTree",
+	"Trouble",
+}
+vim.g.indentLine_enabled = 1
+vim.g.indent_blankline_char = "▏"
+vim.g.indent_blankline_show_trailing_blankline_indent = false
+vim.g.indent_blankline_show_first_indent_level = true
+vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_context_patterns = {
+	"class",
+	"return",
+	"function",
+	"method",
+	"^if",
+	"^while",
+	"jsx_element",
+	"^for",
+	"^object",
+	"^table",
+	"block",
+	"arguments",
+	"if_statement",
+	"else_clause",
+	"jsx_element",
+	"jsx_self_closing_element",
+	"try_statement",
+	"catch_clause",
+	"import_statement",
+	"operation_type",
+}
+-- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+vim.wo.colorcolumn = "99999"
+
+indent_blankline.setup({
+	show_current_context = true,
+})
+EOF
+" }}}
+
+
+" 'auto-session.lua' {{{
+" or use lua
+lua << EOF
+
+-- local session_saved_dir = vim.fn.getcwd().."/.sessions/"
+-- 
+-- if vim.fn.isdirectory(session_saved_dir) == 0 then
+--     vim.fn.mkdir(session_saved_dir, 'p')
+-- end
+
+local opts = {
+  log_level = 'info',
+  auto_session_enable_last_session = false,
+  auto_session_root_dir = vim.fn.stdpath('data').."/sessions/",
+  auto_session_enabled = false,
+  auto_save_enabled = nil,
+  auto_restore_enabled = nil,
+  auto_session_suppress_dirs = nil,
+  auto_session_use_git_branch = nil,
+  -- the configs below are lua only
+  bypass_session_save_file_types = nil
+}
+
+require('auto-session').setup(opts)
+
+local SessionLensActions = require("telescope._extensions.session-lens.session-lens-actions")
+require('session-lens').setup {
+  theme = 'ivy',
+  path_display = {'smart'},
+  previewer = true,
+}
+EOF
+nnoremap <leader>ss :lua require('auto-session').SaveSession(require('auto-session').get_root_dir() .. vim.fn.input('SavedSessionName > ')) <CR>
+nnoremap <leader>ls :Telescope session-lens search_session<CR>
 " }}}
