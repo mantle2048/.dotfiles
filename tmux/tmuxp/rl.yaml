@@ -18,7 +18,7 @@ windows:
     - shell_command:
       - ipython
       - import torch
-      - import numpy
+      - import numpy as np
       - import gym
       - clear
     - pane

@@ -34,7 +34,6 @@ set encoding=UTF-8
 set clipboard+=unnamedplus " Copy paste between vim and everything else
 set nojoinspaces " don't autoinsert two spaces after '.', '?', '!' for join command
 set showcmd " extra info at end of command line
-filetype plugin indent on
 
 set nofoldenable          " disable folding when open
 set foldmethod=expr
@@ -59,6 +58,14 @@ augroup CursorLineOnlyInActiveWindow
 augroup END
 
 filetype plugin indent on " enable file type detection
+" --------------------------------------------------------------------------------
+" configure editor with tabs and nice stuff...
+" --------------------------------------------------------------------------------
+set expandtab           " enter spaces when tab is pressed
+set textwidth=120       " break lines when line length increases
+set tabstop=4           " use 4 spaces to represent tab
+set softtabstop=4
+set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent
 
 "---------------------
@@ -256,8 +263,21 @@ nmap <leader>p :r! cat /tmp/vitmp<CR>
 nnoremap yu y$
 nnoremap yt y0
 
-" swap LHS and RHS
-" nnoremap <leader>z :s/\([^=]*\)\s\+=\s\+\([^;]*\)/\2 = \1<CR>
+"---------------------
+"  quick insert breakpoint in Vim-python
+"---------------------
+func! s:SetBreakpoint()
+    cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+endf
+
+func! s:RemoveBreakpoint()
+    exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+    if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+nnoremap <silent><F6> :call <SID>ToggleBreakpoint()<CR>
 
 "---------------------
 " Macro configuration
@@ -282,10 +302,11 @@ call plug#begin('~/.dotfiles/vim/plugged')
 Plug 'rmagatti/auto-session'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
-Plug 'glepnir/dashboard-nvim'
+" Plug 'glepnir/dashboard-nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'ojroques/nvim-bufdel'
@@ -298,6 +319,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'FooSoft/vim-argwrap'
 Plug 'ojroques/vim-oscyank'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'rmagatti/session-lens'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -311,8 +333,9 @@ call plug#end()
 " }}}
 
 " Plug justinmk/vim-sneak {{{
-map <space>f <Plug>Sneak_s
-map <space>F <Plug>Sneak_S
+map <space><space>w <Plug>Sneak_s
+map <space><space>b <Plug>Sneak_S
+let g:sneak#label = 1
 " }}}
 
 " Plug FooSoft/vim-argwrap {{{
@@ -323,57 +346,33 @@ nnoremap <Leader>w :ArgWrap<CR>
 vnoremap <leader>c :OSCYank<CR>
 " }}}
 
-" Plug glephir/dashboard-nvim {{{
-
-" let g:dashboard_default_executive ='telescope'
-" let g:dashboard_custom_shortcut={
-" \ 'find_file'          : '<leader> p',
-" \ 'find_word'          : '<leader> fw',
-" \ 'book_marks'         : '<leader> jm',
-" \ }
-" let s:header = [
-"     \ '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
-"     \ '████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
-"     \ '██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
-"     \ '██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-"     \ '██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
-"     \ '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
-"     \ '',
-"     \ '                 [ @_mantle ]                 ',
-"     \ ]
-" let s:footer = []
-" let g:dashboard_custom_header = s:header
-" let g:dashboard_custom_footer = s:footer
-
-lua << EOF
-local home = os.getenv('HOME')
-local db = require('dashboard')
-EOF
-" }}}
-
 
 " kyazdani42/nvim-tree.lua {{{
 lua << EOF
 -- empty setup using defaults
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  ignore_ft_on_setup  = { 'startify', 'dashboard' },
-  view = {
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
+-- require("nvim-tree").setup({
+--   disable_netrw = false,
+--   hijack_netrw = true,
+--   hijack_cursor = true,
+--   update_focused_file = {
+--     enable = true,
+--     update_cwd = false,
+--   },
+--   sort_by = "case_sensitive",
+--   ignore_ft_on_setup  = { 'startify', 'dashboard' },
+--   view = {
+--     mappings = {
+--       list = {
+--         { key = "u", action = "dir_up" },
+--       },
+--     },
+--   },
+--   filters = {
+--     dotfiles = true,
+--   },
+-- })
 EOF
-nnoremap <leader>n :NvimTreeToggle<CR>
+" nnoremap <leader>n :NvimTreeToggle<CR>
 "}}}
 
 
@@ -384,14 +383,14 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 require('telescope').setup {
   defaults = {
     initial_mode = 'normal',
-    file_ignore_patterns = { "yarn.lock" },
-    path_display = { "smart" },
-    sorting_strategy = "ascending",
+    file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+		"%.pdf", "%.mkv", "%.mp4", "%.zip", "__pycache__","%.egg-info" },
+    path_display = { "short" },
     mappings = {
         n = {
           ["l"] = "select_default",
           ["q"] = "close",
-          ["<space>"] = actions.toggle_selection + actions.move_selection_worse,
+          -- ["<space><space>"] = actions.toggle_selection + actions.move_selection_worse,
         }
     }
   },
@@ -407,9 +406,8 @@ require('telescope').setup {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       path_display = { truncate = 3 },
-      layout_config = {
-        preview_width = 0.6
-      },
+      grouped = true,
+      sorting_strategy = 'ascending',
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
@@ -445,7 +443,7 @@ require('telescope').setup {
       layout_config = {
         preview_width = 0.6
       },
-      find_command = { "rg", "--ignore", "-L", "--hidden", "--files" }
+      find_command = { "rg", "--ignore", "-L", "--files" }
     },
     grep_string = {
       layout_config = {
@@ -515,7 +513,7 @@ require'nvim-treesitter.configs'.setup {
     disable = { "vim" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml", "python" } },
   context_commentstring = {
     enable = true
   },
@@ -659,8 +657,8 @@ if not status_ok then
   return
 end
 
-local color1 = 4
-local color2 = 2
+local color1 = 2
+local color2 = 4
 local color3 = 3
 
 bufferline.setup {
@@ -807,7 +805,6 @@ EOF
 
 
 " 'auto-session.lua' {{{
-" or use lua
 lua << EOF
 
 -- local session_saved_dir = vim.fn.getcwd().."/.sessions/"
@@ -840,4 +837,41 @@ require('session-lens').setup {
 EOF
 nnoremap <leader>ss :lua require('auto-session').SaveSession(require('auto-session').get_root_dir() .. vim.fn.input('SavedSessionName > ')) <CR>
 nnoremap <leader>ls :Telescope session-lens search_session<CR>
+" }}}
+
+
+" Plug vim-gutentags {{{
+
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 忽略gitinore中的文件
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'bash -c "git ls-files; git ls-files --others --exclude-standard"',
+      \ },
+      \ }
+" }}}
+
+
+" Plug 'Vimjas/vim-python-pep8-indent'{{{
+let g:python_pep8_indent_multiline_string = 1
+let g:python_pep8_indent_hang_closing = 1
 " }}}
