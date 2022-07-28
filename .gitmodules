@@ -1,95 +1,11 @@
-[submodule "vim/bundle/ctrlp.vim"]
-    path = vim/pack/vendor/start/ctrlp.vim
-    url = https://github.com/ctrlpvim/ctrlp.vim
-    ignore = untracked
-[submodule "vim/bundle/nerdtree"]
-    path = vim/pack/vendor/start/nerdtree
-    url = https://github.com/scrooloose/nerdtree
-    ignore = untracked
-[submodule "vim/bundle/vim-bundler"]
-    path = vim/pack/vendor/start/vim-bundler
-    url = https://github.com/tpope/vim-bundler.git
-    ignore = untracked
-[submodule "vim/bundle/ale"]
-    path = vim/pack/vendor/start/ale
-    url = https://github.com/dense-analysis/ale.git
-    ignore = untracked
-[submodule "jupyter/nbextensions/jupyter-vim-binding"]
-	path = jupyter/nbextensions/jupyter-vim-binding
-	url = https://github.com/lambdalisue/jupyter-vim-binding
-[submodule "vim/bundle/vim-buffergator"]
-	path = vim/pack/vendor/start/vim-buffergator
-	url = https://github.com/jeetsukumaran/vim-buffergator
-    ignore = untracked
-[submodule "vim/bundle/python-syntax"]
-	path = vim/pack/vendor/start/python-syntax
-	url = https://github.com/vim-python/python-syntax
-    ignore = untracked
-[submodule "vim/bundle/lightline.vim"]
-	path = vim/pack/vendor/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
-    ignore = untracked
-[submodule "vim/bundle/lightline-ale"]
-	path = vim/pack/vendor/start/lightline-ale
-	url = https://github.com/maximbaz/lightline-ale
-    ignore = untracked
-[submodule "vim/bundle/vim-argwrap"]
-	path = vim/pack/vendor/start/vim-argwrap
-	url = https://github.com/FooSoft/vim-argwrap
-    ignore = untracked
-[submodule "vim/bundle/incsearch.vim"]
-	path = vim/pack/vendor/start/incsearch.vim
-	url = https://github.com/haya14busa/incsearch.vim
-    ignore = untracked
-[submodule "incsearch-easymotion.vim"]
-	path = vim/pack/vendor/start/incsearch-easymotion.vim
-	url = https://github.com/haya14busa/incsearch-easymotion.vim
-    ignore = untracked
-[submodule "vim/bundle/vim-easymotion"]
-	path = vim/pack/vendor/start/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
-    ignore = untracked
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty # ignore dirty commits in the submodule
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/pack/vendor/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-    ignore = untracked
-[submodule "vim/bundle/vim-cool"]
-	path = vim/pack/vendor/start/vim-cool
-	url = https://github.com/romainl/vim-cool
-    ignore = untracked
-[submodule "vim/bundle/vim-mundo"]
-	path = vim/pack/vendor/start/vim-mundo
-	url = https://github.com/simnalamburt/vim-mundo
-    ignore = untracked
-[submodule "vim/bundle/vim-gutentags"]
-	path = vim/pack/vendor/start/vim-gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags
-    ignore = untracked
-[submodule "vim/bundle/vim-signify"]
-	path = vim/pack/vendor/start/vim-signify
-	url = https://github.com/mhinz/vim-signify
-    ignore = untracked
-[submodule "vim/pack/vendor/start/vim-bracketed-paste"]
-	path = vim/pack/vendor/start/vim-bracketed-paste
-	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
-    ignore = untracked
+[submodule "jupyter/nbextensions/jupyter-vim-binding"]
+	path = jupyter/nbextensions/jupyter-vim-binding
+	url = https://github.com/lambdalisue/jupyter-vim-binding
 [submodule "vim/pack/vendor/start/ack.vim"]
-	path = vim/pack/vendor/start/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
-    ignore = untracked
-[submodule "vim/pack/vendor/start/wsl-copy"]
-	path = vim/pack/vendor/start/wsl-copy
-	url = https://github.com/christianfosli/wsl-copy.git
-    ignore = untracked
-[submodule "vim/pack/vendor/start/vim-easyescape-plus"]
-	path = vim/pack/vendor/start/vim-easyescape-plus
-	url = https://github.com/hyhugh/vim-easyescape-plus
-    ignore = untracked
-[submodule "vim/pack/vendor/start/vim-unimpaired"]
-	path = vim/pack/vendor/start/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
+    path = vim/pack/vendor/start/ack.vim
+    url = https://github.com/mileszs/ack.vim.git
     ignore = untracked
