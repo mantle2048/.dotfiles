@@ -1,3 +1,4 @@
+# NAME = xxxx tmuxp load rl
 session_name: ${NAME}
 start_directory: ${PWD}/ # load session relative to config location (project root).
 shell_command_before:
@@ -10,10 +11,8 @@ windows:
     - focus: true
     - pane
 
-- window_name: Logger
-  layout: main-vertical
-  options:
-    main-pane-width: 72
+- window_name: Ipy
+  layout: even-horizontal
   panes:
     - shell_command:
       - ipython
@@ -22,14 +21,16 @@ windows:
       - import gym
       - clear
     - pane
+
+- window_name: Logger
+  layout: even-horizontal
+  panes:
+    - pane
     - pane
 
 - window_name: Monitor
-  layout: main-vertical
-  options:
-    main-pane-width: 72
+  layout: even-horizontal
   panes:
-  - pane
   - shell_command:
     - gpustat -i
   - shell_command:
