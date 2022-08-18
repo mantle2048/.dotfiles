@@ -301,8 +301,8 @@ call plug#begin('~/.dotfiles/vim/plugged')
 
 Plug 'rmagatti/auto-session'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'chrisbra/csv.vim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
-" Plug 'glepnir/dashboard-nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -325,7 +325,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'justinmk/vim-sneak'
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-unimpaired'
 
 " Initialize plugin system
@@ -386,6 +385,7 @@ require('telescope').setup {
     file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
 		"%.pdf", "%.mkv", "%.mp4", "%.zip", "__pycache__","%.egg-info" },
     path_display = { "short" },
+    previewer = true,
     mappings = {
         n = {
           ["l"] = "select_default",
@@ -426,6 +426,7 @@ require('telescope').setup {
   },
   pickers = {
     buffers = {
+      previewer = false,
       show_all_buffers = true,
       sort_lastused = true,
       theme = "ivy",
