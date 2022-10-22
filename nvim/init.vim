@@ -662,6 +662,7 @@ local color1 = 2
 local color2 = 4
 local color3 = 3
 
+
 bufferline.setup {
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -669,7 +670,7 @@ bufferline.setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-    indicator_icon = "▎",
+    indicator = { style = 'icon', icon = "▎"},
     buffer_close_icon = "",
     modified_icon = "●",
     close_icon = "",
