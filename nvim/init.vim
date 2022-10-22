@@ -414,7 +414,7 @@ require('telescope').setup {
         },
         ["n"] = {
           -- your custom normal mode mappings
-          ['q'] = fb_actions.open,
+          -- ['q'] = fb_actions.open,
           ['p'] = fb_actions.copy,
           ['x'] = fb_actions.remove,
           ['v'] = fb_actions.move,
