@@ -264,20 +264,20 @@ nnoremap yu y$
 nnoremap yt y0
 
 "---------------------
-"  quick insert breakpoint in Vim-python
+"  quick insert breakpoint in Vim-python (temporally abandoned since python-mode)
 "---------------------
-func! s:SetBreakpoint()
-    cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
-endf
-
-func! s:RemoveBreakpoint()
-    exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
-endf
-
-func! s:ToggleBreakpoint()
-    if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
-endf
-nnoremap <silent><F6> :call <SID>ToggleBreakpoint()<CR>
+" func! s:SetBreakpoint()
+"     cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+" endf
+" 
+" func! s:RemoveBreakpoint()
+"     exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+" endf
+" 
+" func! s:ToggleBreakpoint()
+"     if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+" endf
+" nnoremap <silent><F6> :call <SID>ToggleBreakpoint()<CR>
 
 "---------------------
 " Macro configuration
@@ -326,6 +326,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-unimpaired'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Initialize plugin system
 call plug#end()
@@ -876,4 +877,29 @@ let g:gutentags_file_list_command = {
 " Plug 'Vimjas/vim-python-pep8-indent'{{{
 let g:python_pep8_indent_multiline_string = 1
 let g:python_pep8_indent_hang_closing = 1
+" }}}
+
+" Plug 'python-mode/python-mode'{{{
+let g:pymode_python = 'python3'
+
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
+let g:pymode_breakpoint_bind = '<F6>'
+
+" remove the annoying red line
+let g:pymode_options_colorcolumn = 0
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
+let g:pymode_doc = 0
+
+let g:pymode_run = 0
+
+let g:pymode_rope = 0
+
+let g:pymode_rope_completion = 0
+
+let g:pymode_virtualenv = 0
+
+let g:pymode_rope_goto_definition_bind = 'gD'
+
+let g:pymode_syntax = 0
 " }}}
