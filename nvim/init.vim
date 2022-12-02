@@ -327,6 +327,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-unimpaired'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Initialize plugin system
 call plug#end()
@@ -493,8 +494,8 @@ nnoremap <leader>gr :lua require('telescope.builtin').grep_string({search = vim.
 nnoremap <Leader>gs :lua require'telescope.builtin'.git_status{}<cr>
 nnoremap <Leader>gb :lua require'telescope.builtin'.git_branches{}<cr>
 nnoremap <leader>ru :lua require'telescope.builtin'.resume{}<CR>
-nnoremap <leader>qx :Telescope quickfix theme=ivy<cr>
 nnoremap <leader>qh :lua require('telescope.builtin').quickfixhistory(require('telescope.themes').get_ivy{})<cr>
+nnoremap <leader>qx :Telescope quickfix theme=ivy<CR>
 nnoremap <leader>jl :Telescope jumplist theme=ivy<cr>
 nnoremap <leader>jm :Telescope marks theme=ivy<cr>
 nnoremap <leader>reg :Telescope registers theme=ivy<cr>
@@ -916,4 +917,9 @@ let g:pymode_rope_goto_definition_bind = 'gD'
 let g:pymode_syntax = 0
 
 let g:pymode_motion = 0
+" }}}
+
+" Plug 'heavenshell/vim-pydocstring'{{{
+let g:pydocstring_formatter = 'google'
+let g:pydocstring_doq_path = '~/.dotfiles/vim/plugged/vim-pydocstring/lib/doq'
 " }}}
