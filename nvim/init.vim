@@ -889,6 +889,18 @@ let g:pymode_breakpoint_bind = '<F6>'
 let g:pymode_options_colorcolumn = 0
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
+" Lint settings
+nnoremap <leader>r :PymodeLintAuto<CR>
+let g:pymode_lint = 1
+
+let g:pymode_lint_on_write = 1
+
+let g:pymode_lint_ignore = ["E501"]
+" C0111,W0621,E501,F0002
+
+let g:pymode_lint_select = ["W0011", "W430"]
+
+" Other setttings
 let g:pymode_doc = 0
 
 let g:pymode_run = 0
@@ -902,4 +914,6 @@ let g:pymode_virtualenv = 0
 let g:pymode_rope_goto_definition_bind = 'gD'
 
 let g:pymode_syntax = 0
+
+let g:pymode_motion = 0
 " }}}
