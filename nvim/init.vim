@@ -896,7 +896,7 @@ let g:pymode_lint = 1
 
 let g:pymode_lint_on_write = 1
 
-let g:pymode_lint_ignore = ["E501"]
+let g:pymode_lint_ignore = ["E501", "W0612", "E702"]
 " C0111,W0621,E501,F0002
 
 let g:pymode_lint_select = ["W0011", "W430"]
