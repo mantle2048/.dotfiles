@@ -377,6 +377,19 @@ EOF
 " nnoremap <leader>n :NvimTreeToggle<CR>
 "}}}
 
+" 'nvim-web-devicons'{{{
+lua << EOF
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  xml = {
+    icon = "",
+  }
+ };
+}
+EOF
 
 " nvim-telescope/telescope.nvim {{{
 lua << EOF
