@@ -38,6 +38,7 @@ set showcmd " extra info at end of command line
 set nofoldenable          " disable folding when open
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set scl=auto
 
 " attempt to speed-up vim
 set ttyfast
@@ -734,6 +735,16 @@ bufferline.setup {
     },
     modified_visible = {
       ctermbg = color1,
+    },
+    pick_selected = {
+      ctermbg = color2,
+      bold = true,
+      italic = true,
+    },
+    pick_visible = {
+      ctermbg = color1,
+      bold = true,
+      italic = true,
     },
   }
 }
