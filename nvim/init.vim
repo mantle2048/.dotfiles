@@ -881,6 +881,9 @@ let g:python_pep8_indent_hang_closing = 1
 " }}}
 
 " Plug 'python-mode/python-mode'{{{
+"
+nnoremap <leader>n :exe "set signcolumn=" .. (&signcolumn == "yes" ? "no" : "yes")<CR>
+
 let g:pymode_python = 'python3'
 
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
