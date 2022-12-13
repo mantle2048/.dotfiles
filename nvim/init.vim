@@ -38,6 +38,7 @@ set showcmd " extra info at end of command line
 set nofoldenable          " disable folding when open
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set scl=auto
 
 " attempt to speed-up vim
 set ttyfast
@@ -376,6 +377,19 @@ EOF
 " nnoremap <leader>n :NvimTreeToggle<CR>
 "}}}
 
+" 'nvim-web-devicons'{{{
+lua << EOF
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- you can specify color or cterm_color instead of specifying both of them
+ -- DevIcon will be appended to `name`
+ override = {
+  xml = {
+    icon = "",
+  }
+ };
+}
+EOF
 
 " nvim-telescope/telescope.nvim {{{
 lua << EOF
@@ -734,6 +748,16 @@ bufferline.setup {
     },
     modified_visible = {
       ctermbg = color1,
+    },
+    pick_selected = {
+      ctermbg = color2,
+      bold = true,
+      italic = true,
+    },
+    pick_visible = {
+      ctermbg = color1,
+      bold = true,
+      italic = true,
     },
   }
 }
