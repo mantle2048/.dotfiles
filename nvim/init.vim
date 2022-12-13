@@ -906,7 +906,7 @@ let g:python_pep8_indent_hang_closing = 1
 
 " Plug 'python-mode/python-mode'{{{
 "
-nnoremap <leader>n :exe "set signcolumn=" .. (&signcolumn == "yes" ? "no" : "yes")<CR>
+nnoremap <silent> <leader>n :exe "set signcolumn=" .. (&signcolumn == "yes" ? "no" : "yes")<CR>
 
 let g:pymode_python = 'python3'
 
@@ -918,7 +918,8 @@ let g:pymode_options_colorcolumn = 0
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " Lint settings
-nnoremap <leader>r :PymodeLintAuto<CR>
+nnoremap <leader>li :PymodeLintToggle<CR>
+nnoremap <leader>8 :PymodeLintAuto<CR>
 let g:pymode_lint = 1
 
 let g:pymode_lint_on_write = 1
@@ -926,7 +927,7 @@ let g:pymode_lint_on_write = 1
 let g:pymode_lint_ignore = ["E501", "W0612", "E702"]
 " C0111,W0621,E501,F0002
 
-let g:pymode_lint_select = ["W0011", "W430"]
+" let g:pymode_lint_select = ["W0011", "W430"]
 
 " Other setttings
 let g:pymode_doc = 0
