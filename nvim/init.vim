@@ -25,7 +25,6 @@ set smartcase
 set noswapfile
 set nobackup
 set incsearch
-set scrolloff=2
 set noshowmode
 set completeopt=menu,menuone,noselect
 set number
@@ -123,7 +122,7 @@ set listchars=tab:>>,nbsp:~ " set list to see tabs and non-breakable spaces
 
 set linebreak " Have lines wrap instead of continue off-screen
 
-set scrolloff=12 " show lines above and below cursor (when possible)
+set scrolloff=999 " show lines above and below cursor (when possible)
 
 set noshowmode " hide mode
 
@@ -209,8 +208,9 @@ nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
 " move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+nnoremap j gjzz
+nnoremap k gkzz
+nnoremap G Gzz
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -908,6 +908,13 @@ let g:python_pep8_indent_hang_closing = 1
 "
 nnoremap <silent> <leader>n :exe "set signcolumn=" .. (&signcolumn == "yes" ? "no" : "yes")<CR>
 
+" Lint settings
+nnoremap <leader>li :PymodeLint<CR>
+nnoremap <leader>8 :PymodeLintAuto<CR>
+
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_message = 1
+
 let g:pymode_python = 'python3'
 
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
@@ -916,13 +923,6 @@ let g:pymode_breakpoint_bind = '<F6>'
 " remove the annoying red line
 let g:pymode_options_colorcolumn = 0
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
-" Lint settings
-nnoremap <leader>li :PymodeLintToggle<CR>
-nnoremap <leader>8 :PymodeLintAuto<CR>
-let g:pymode_lint = 1
-
-let g:pymode_lint_on_write = 1
 
 let g:pymode_lint_ignore = ["E501", "W0612", "E702"]
 " C0111,W0621,E501,F0002
