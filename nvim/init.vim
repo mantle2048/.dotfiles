@@ -208,9 +208,9 @@ nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
 " move vertically by visual line
-nnoremap j gjzz
-nnoremap k gkzz
-nnoremap G Gzz
+" nnoremap j gjzz
+" nnoremap k gkzz
+" nnoremap G Gzz
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -922,7 +922,7 @@ let g:pymode_breakpoint_bind = '<F6>'
 
 " remove the annoying red line
 let g:pymode_options_colorcolumn = 0
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 let g:pymode_lint_ignore = ["E501", "W0612", "E702"]
 " C0111,W0621,E501,F0002
