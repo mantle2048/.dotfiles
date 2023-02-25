@@ -89,3 +89,12 @@ tmux_rl() {
     session_name=$1
     NAME=$session_name tmuxp load rl
 }
+
+# quick mujoco viewer open with mjcf input
+mujoco() {
+    if [ -z "$1" ]; then
+        python -m mujoco.viewer
+    else
+        python -m mujoco.viewer --mjcf="$1"
+    fi
+}
