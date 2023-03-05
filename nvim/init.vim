@@ -30,7 +30,7 @@ set completeopt=menu,menuone,noselect
 set number
 set updatetime=50
 set encoding=UTF-8
-set clipboard+=unnamedplus " Copy paste between vim and everything else
+" set clipboard+=unnamedplus " Copy paste between vim and everything else
 set nojoinspaces " don't autoinsert two spaces after '.', '?', '!' for join command
 set showcmd " extra info at end of command line
 
