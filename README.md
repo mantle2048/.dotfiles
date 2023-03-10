@@ -1,2 +1,2 @@
 # dotfiles
-_mantle doftfiles for linux
+_mantle dotfiles for linux
