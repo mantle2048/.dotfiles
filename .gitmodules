@@ -1,11 +1,4 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-	ignore = dirty # ignore dirty commits in the submodule
-[submodule "jupyter/nbextensions/jupyter-vim-binding"]
-	path = jupyter/nbextensions/jupyter-vim-binding
-	url = https://github.com/lambdalisue/jupyter-vim-binding
-[submodule "vim/pack/vendor/start/ack.vim"]
-    path = vim/pack/vendor/start/ack.vim
-    url = https://github.com/mileszs/ack.vim.git
-    ignore = untracked
+	; ignore = dirty # ignore dirty commits in the submodule
