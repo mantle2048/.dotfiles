@@ -115,8 +115,8 @@ maps.n["<leader>b|"] = {
 }
 
 -- Navigate tabs
-maps.n["<C-right>"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
-maps.n["<C-left>"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
+maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
+maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
 
 -- Alpha
 if is_available "alpha-nvim" then
