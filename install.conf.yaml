@@ -27,11 +27,9 @@
     ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
-    ~/.config/nvim/init.vim: nvim/init.vim
-    ~/.config/zathura/zathurarc: zathura/zathurarc
+    ~/.config/nvim/lua/user: nvim
 
 - create:
-    - ~/.vim/undodir
 
 - shell:
   - git submodule sync --recursive
@@ -40,4 +38,3 @@
   - >
     git cleanall -f
     jupyter/nbextensions/
-    vim/pack/vendor/start/
