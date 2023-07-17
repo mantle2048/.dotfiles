@@ -10,12 +10,6 @@ return {
   --   end,
   -- },
   {
-	  "AckslD/nvim-trevJ.lua",
-	  config = function()
-	    require("trevj").setup()
-	  end,
-  },
-  {
 	  "FooSoft/vim-argwrap",
 	  lazy = false,
 	  config = function()
