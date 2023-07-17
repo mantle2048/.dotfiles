@@ -28,6 +28,7 @@
     ~/.vim:
     ~/.vimrc:
     ~/.config/nvim/init.vim: nvim/init.vim
+    ~/.config/zathura/zathurarc: zathura/zathurarc
 
 - create:
     - ~/.vim/undodir
