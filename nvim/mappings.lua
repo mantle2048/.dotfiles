@@ -76,7 +76,6 @@ return {
     -- Standard Operations
     ["<leader>w"] = false,
     ["<leader>q"] = false,
-    ["<leader>n"] = false,
     ["<C-s>"] = false,
     ["<C-q>"] = false,
     ["|"] = false,
