@@ -5,5 +5,5 @@ jupyter/jupyter_notebook_config.json
 jupyter/nbextensions
 nvim/undodir/
 tmux/plugins/
-vim/plugged/
+nvim/plugged/
 vim/pack/
