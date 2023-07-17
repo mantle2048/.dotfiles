@@ -128,6 +128,9 @@ return {
     -- Navigate tabs
     ["<C-right>"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
     ["<C-left>"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
+
+    -- NeoTree
+    ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
   },
   t = {
     -- setting a mapping to false will disable it

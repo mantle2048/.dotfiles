@@ -13,7 +13,6 @@ return {
         selection_caret = get_icon("Selected", 1),
         path_display = { "truncate" },
         sorting_strategy = "ascending",
-        initial_mode = 'normal',
         layout_config = {
           horizontal = { prompt_position = "top", preview_width = 0.55 },
           vertical = { mirror = false },
@@ -30,7 +29,6 @@ return {
           },
           n = {
             q = actions.close,
-            l = actions.select_default,
           },
         },
       },
