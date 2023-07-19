@@ -17,4 +17,5 @@ return {
 	  end
   },
   "ojroques/nvim-osc52",
+  "Mofiqul/dracula.nvim",
 }
