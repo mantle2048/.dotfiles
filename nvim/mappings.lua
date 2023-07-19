@@ -130,7 +130,14 @@ return {
     ["<C-LEFT>"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
 
     -- NeoTree
-    ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
+    ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
+
+    -- Comment
+    ["<space><space>"] = {
+      function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Toggle comment line"
+    },
+
   },
   t = {
     -- setting a mapping to false will disable it
@@ -140,6 +147,10 @@ return {
   v = {
     -- nvim-osc52
     ["<leader>c"] = { function() require('osc52').copy_visual() end, desc = "Copy Given Text in Normal" },
+    ["<space><space>"] = {
+      "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+      desc = "Toggle comment for selection"
+    },
     ["H"] = "^",
     ["L"] = "$",
   }
