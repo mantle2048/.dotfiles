@@ -32,12 +32,12 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
-          "python",
+          -- "python",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -48,6 +48,36 @@ return {
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
+    },
+    config = {
+      pyright = function(opts)
+        local util = require "lspconfig.util"
+        local root_files = {
+          "pyproject.toml",
+          "setup.py",
+          "setup.cfg",
+          "requirements.txt",
+          "Pipfile",
+          "pyrightconfig.json",
+          "main.py"
+        }
+        opts.root_dir = util.root_pattern(unpack(root_files))
+        return opts
+      end,
+      ruff_lsp = function(opts)
+        local util = require "lspconfig.util"
+        local root_files = {
+          "pyproject.toml",
+          "setup.py",
+          "setup.cfg",
+          "requirements.txt",
+          "Pipfile",
+          "pyrightconfig.json",
+          "main.py"
+        }
+        opts.root_dir = util.root_pattern(unpack(root_files))
+        return opts
+      end,
     },
     -- enable servers that you already have installed without mason
     servers = {
