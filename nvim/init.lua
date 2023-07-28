@@ -1,7 +1,8 @@
 return {
   -- Set colorscheme to use
   -- colorscheme = "astrodark",
-  colorscheme = "dracula",
+  colorscheme = "catppuccin",
+  -- colorscheme = "dracula",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
