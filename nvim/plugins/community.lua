@@ -9,7 +9,6 @@ return {
   { import = "astrocommunity.pack.yaml"},
   { import = "astrocommunity.pack.json"},
   { import = "astrocommunity.pack.bash"},
-  -- { import = "astrocommunity.colorscheme.dracula-nvim"},
   { import = "astrocommunity.colorscheme.catppuccin"},
-  { import = "astrocommunity.utility.transparent-nvim"},
+  { import = "astrocommunity.color.transparent-nvim"},
 }
