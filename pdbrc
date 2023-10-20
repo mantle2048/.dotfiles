@@ -14,16 +14,17 @@ from rich.console import Console
 from rich import inspect
 from rich.progress import track
 from rich import print
-from rich import import trackback
+from rich import traceback
 
-pretty.install()
-trackback.install(show_locals=True)
+_ = pretty.install()
+_ = traceback.install(show_locals=True)
 
 console = Console()
 inspect = partial(inspect, methods=True)
 
 pdb.pprint = print
 
+alias p import pdb; pdb.pprint(%*)
 alias pp import pdb; pdb.pprint(%*)
 alias ins inspect(%*)
 

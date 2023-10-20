@@ -16,6 +16,6 @@ from rich.progress import track
 from rich import print
 
 pretty.install()
-trackback.install(show_locals=True)
+traceback.install(show_locals=True)
 console = Console()
 inspect = partial(inspect, methods=True)
