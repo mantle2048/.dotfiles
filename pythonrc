@@ -1,2 +1,7 @@
 import rlcompleter, readline
 readline.parse_and_bind('tab:complete')
+
+try:
+    import rich
+except ImportError:
+    subprocess.run(["pip", "install", "rich"], check=True)
