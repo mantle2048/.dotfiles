@@ -1,0 +1,48 @@
+#/usr/bin/env python3
+
+import pdb
+import inspect as __inspect
+from pprint import pprint as __pprint
+
+from contextlib import suppress as __suppress
+
+
+import rich
+from functools import partial
+from rich import pretty
+from rich.console import Console
+from rich import inspect
+from rich.progress import track
+from rich import print
+from rich import import trackback
+
+pretty.install()
+trackback.install(show_locals=True)
+
+console = Console()
+inspect = partial(inspect, methods=True)
+
+pdb.pprint = print
+
+alias pp import pdb; pdb.pprint(%*)
+alias ins inspect(%*)
+
+# Print a dictionary sorted by key.
+alias pd pp {k: v for k, v in sorted(dict(%*).items(), key=lambda i: i[0])}
+
+# Print the member variables of a thing.
+alias pi pd %*.__dict__
+
+alias pii pd dict(__inspect.getmembers(%1))
+
+# Print the member variables of self.
+alias ps pi self
+
+# Print the locals.
+alias pl pd locals()
+alias pg pd globals()
+
+# Next and list, and step and list.
+alias nll n;;ll
+alias nl n;;l
+alias sl s;;l

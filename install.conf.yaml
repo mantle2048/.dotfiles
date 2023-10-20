@@ -22,6 +22,7 @@
     ~/.jupyter/nbextensions: jupyter/nbextensions
     ~/.local/share/jupyter/nbextensions: jupyter/nbextensions
     ~/.pythonrc:
+    ~/.pdbrc:
     ~/.shell:
     ~/.tmux.conf:
 
