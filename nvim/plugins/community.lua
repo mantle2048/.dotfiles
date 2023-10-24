@@ -11,4 +11,5 @@ return {
   { import = "astrocommunity.pack.bash"},
   { import = "astrocommunity.colorscheme.catppuccin"},
   { import = "astrocommunity.color.transparent-nvim"},
+  { import = "astrocommunity.programming-language-support.csv-vim"},
 }
