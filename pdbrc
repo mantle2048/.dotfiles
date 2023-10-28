@@ -11,7 +11,7 @@ import rich
 from functools import partial
 from rich import pretty
 from rich.console import Console
-from rich import inspect
+from rich import inspect as ins
 from rich.progress import track
 from rich import print
 from rich import traceback
@@ -26,7 +26,7 @@ pdb.pprint = print
 
 alias p import pdb; pdb.pprint(%*)
 alias pp import pdb; pdb.pprint(%*)
-alias ins inspect(%*)
+alias ins ins(%*)
 
 # Print a dictionary sorted by key.
 alias pd pp {k: v for k, v in sorted(dict(%*).items(), key=lambda i: i[0])}
