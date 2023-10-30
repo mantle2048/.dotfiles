@@ -20,7 +20,7 @@ _ = pretty.install()
 _ = traceback.install(show_locals=True)
 
 console = Console()
-inspect = partial(inspect, methods=True)
+inspect = partial(ins, methods=True)
 
 pdb.pprint = print
 
