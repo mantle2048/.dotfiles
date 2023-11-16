@@ -1,8 +1,18 @@
 return { -- further customize the options set by the community
   "xiyaowong/transparent.nvim",
-  opts = function(_, opts) --override the options using
-    opts.exclude_groups = {
-      "CursorLine"
+  config = function(_, config)
+    local transparent = require "transparent"
+    transparent.setup {
+      extra_groups = {
+        "NormalFloat",
+        "NvimTreeNormal",
+      },
+      exclude_groups = {
+        "CursorLine",
+      },
     }
+    transparent.clear_prefix "BufferLine"
+    transparent.clear_prefix "NeoTree"
+    transparent.clear_prefix "lualine"
   end,
 }
