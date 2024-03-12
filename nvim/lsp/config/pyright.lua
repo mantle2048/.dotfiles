@@ -12,5 +12,14 @@ return {
       "main.py",
     }
     return util.find_git_ancestor(fname) or util.root_pattern(unpack(root_files))(fname)
-  end
+  end,
+  settings = {
+    python = {
+      analysis = {
+        diagnosticSeverityOverrides = {
+          reportIncompatibleMethodOverride = false,
+        }
+      },
+    },
+  },
 }
