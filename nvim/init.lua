@@ -1,49 +1,19 @@
-return {
-  -- Set colorscheme to use
-  -- colorscheme = "astrodark",
-  colorscheme = "catppuccin",
-  -- colorscheme = "dracula",
+-- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
+-- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
 
-  -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-  diagnostics = {
-    update_in_insert = false,
-    -- virtual_text = true,
-    -- underline = true,
-  },
+-- validate that lazy is available
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
+end
 
-  lsp = {
-    -- enable servers that you already have installed without mason
-    servers = {
-      -- "pyright"
-    },
-  },
-
-  -- Configure require("lazy").setup() options
-  lazy = {
-    defaults = { lazy = true },
-    performance = {
-      rtp = {
-        -- customize default disabled vim plugins
-        disabled_plugins = { "tohtml", "gzip", "matchit", "zipPlugin", "netrwPlugin", "tarPlugin" },
-      },
-    },
-  },
-
-  -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
-  -- anything that doesn't fit in the normal config locations above can go here
-  polish = function()
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
-  end,
-}
+require "lazy_setup"
+require "polish"

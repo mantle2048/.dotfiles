@@ -25,6 +25,7 @@
     ~/.pdbrc:
     ~/.shell:
     ~/.tmux.conf:
+    ~/.config/nvim: nvim
 
 # - create:
 
