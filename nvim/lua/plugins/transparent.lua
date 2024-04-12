@@ -24,7 +24,7 @@ return {
       opts = {
         mappings = {
           n = {
-            ["<Leader>uT"] = { desc = "Toggle transparency" },
+            ["<Leader>uT"] = { "<Cmd>doautocmd ColorScheme<CR>", desc = "Refresh ColorScheme" },
           },
         },
       },
