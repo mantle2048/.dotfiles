@@ -34,7 +34,7 @@ return {
         wrap = false, -- sets vim.opt.wrap
         swapfile = false, -- Disable swap file
         showmode = true, -- Disable showing modes in command line
-        clipboard = "unnamed", -- Connection to the system clipboard
+        clipboard = "", -- Connection to the system clipboard
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
