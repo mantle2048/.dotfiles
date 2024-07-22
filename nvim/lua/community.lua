@@ -8,7 +8,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.colorscheme.catppuccin"},
-  { import = "astrocommunity.project.nvim-spectre" },
+  { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.color.transparent-nvim"},
   { import = "astrocommunity.programming-language-support.csv-vim"},
   { import = "astrocommunity.pack.lua" },
