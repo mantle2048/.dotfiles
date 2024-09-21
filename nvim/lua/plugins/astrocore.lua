@@ -59,6 +59,7 @@ return {
         ["@j"] = "^jf=wDkA, <Esc>pj^dt=kt=i, <Esc>pxjddkj^",
         ["@f"] = "^\"0dt=^wD^i <Esc>pa <Esc>A<Esc>\"0px^hx",
         ["<CR>"] = "o<Esc>",
+        ["<C-p>"] = "<CR>",
         ["H"] = "^",
         ["L"] = "$",
         -- Navigate tabs
