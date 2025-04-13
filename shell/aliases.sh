@@ -15,8 +15,8 @@ alias rm='rm -i'
 #Jupyter notebook
 
 #Anaconda
-alias sc='conda activate'
-alias sd='conda deactivate'
+alias sc='source activate'
+alias sd='source deactivate'
 
 # other alias
 alias cht=cht.sh

@@ -17,8 +17,18 @@ return {
     highlights = {
       init = { -- this table overrides highlights in all themes
         -- Normal = { bg = "#000000" },
+        -- StatusLine
+        StatusLine = { bg = "none" },
+        -- TabLine
+        TabLine = { bg = "none" },
+        TabLineSel = { bg = "none" },
+        TabLineFill = { bg = "none" },
+        -- BufferLine
+        BufferLine = { bg = "none" },
+        BufferLineSel = { bg = "none" },
+        BufferLineFill = { bg = "none" },
       },
-      astrodark = { -- a table of overrides/changes when applying the astrotheme theme
+      astrotheme = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
       },
     },
