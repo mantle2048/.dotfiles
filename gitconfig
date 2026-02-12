@@ -41,3 +41,23 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[safe]
+	directory = /minimax-dialogue/yema/code/VisionO1
+	directory = /minimax-dialogue/yema/code/lmms-eval
+	directory = /forge
+	directory = /forge/.git
+	directory = /output
+	directory = /verl_vision
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge/third_party/meepo
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge/third_party/faster_transformers
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge/third_party/meepo
+	directory = /output/third_party/faster_transformers
+	directory = /output/third_party/meepo
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge/third_party/meepo/third_party/DeepGEMM
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/forge/third_party/faster_transformers/3rdparty/DeepGEMM
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/verl_vision_o3_dev_new_verl
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/verl_vision
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/heiyu_vlmevalkit
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/verl_vision_internvl
+	directory = /jfs-dialogue-mmos02-rs02/workspace/users/yema/code/verl_vision_eval_new

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+yma_dir=/jfs-dialogue-mmos02-rs02/yema
+
+# export HOME=$yma_dir
+
+export PATH="$yma_dir/.local/bin:$PATH"
+
+export PATH="$yma_dir/bin:$PATH"
+
+[ -f $yma_dir/.fzf.bash ] && source $yma_dir/.fzf.bash
+
+
+eval "$(zoxide init bash)"
+
+
+if [ "$(command -v exa)" ]; then
+    alias ls='exa -G  --color auto --icons -a -s type'
+    alias ll='exa -l --color always --icons -a -s type'
+fi
+
+
+if [ "$(command -v bat)" ]; then
+  alias cat='bat -pp --theme="Nord"'
+fi
+
+# Set vi as the command line editing mode
+set -o vi
+
+# Bind Control-l to clear screen in vi command mode
+bind -m vi-command 'Control-l:clear-screen'
+
+# Bind Control-l to clear screen in vi insert mode
+bind -m vi-insert 'Control-l:clear-screen'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export TERM=xterm-256color
+export TMUX_TERM=xterm-256color
+
+
+alias setp='export proxy="http://pac-internal.xaminim.com:3129" && export https_proxy=$proxy && export http_proxy=$proxy && export ftp_proxy=$proxy && export no_proxy="localhost,127.0.0.1,*.xaminim.com,10.0.0.0/8"'
+# alias setp='export proxy="http://10.1.4.213:3128" && export https_proxy=$proxy && export http_proxy=$proxy && export ftp_proxy=$proxy && export no_proxy="localhost,127.0.0.1,*.xaminim.com,10.0.0.0/8"'
+alias unsetp='unset https_proxy; unset http_proxy; unset all_proxy; unset ALL_PROXY;'
+
+alias scc='source .venv/bin/activate'
+export TMPDIR=/jfs-dialogue-mmos02-rs02/yema/tmp/
