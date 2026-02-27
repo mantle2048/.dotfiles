@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-yma_dir=/jfs-dialogue-mmos02-rs02/yema
+# yma_dir=/jfs-dialogue-mmos02-rs02/yema
 
-export HOME=$yma_dir
+# export HOME=$yma_dir
 
 # Functions
 source ~/.shell/functions.sh
