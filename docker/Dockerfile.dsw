@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:26.01-py3
+FROM pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel
 
 ARG TZ=Asia/Shanghai
 ARG MAX_JOBS=16
@@ -14,8 +14,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_ALL=C.UTF-8 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
+    PIP_ROOT_USER_ACTION=ignore \
     PIP_INDEX_URL=${PIP_INDEX_URL} \
     PIP_TRUSTED_HOST=${PIP_TRUSTED_HOST} \
+    UV_INDEX_URL=${PIP_INDEX_URL} \
     TORCH_CUDA_ARCH_LIST="8.6 9.0 10.0+PTX"
 
 RUN if [ -n "${APT_MIRROR}" ]; then \
@@ -44,8 +46,7 @@ RUN if [ -n "${APT_MIRROR}" ]; then \
 
 # Non-interactive oh-my-zsh installation to avoid build hang.
 RUN RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended \
-    && echo "exec zsh" >> /root/.bashrc
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 
 RUN mkdir -p /root/.ssh && touch /root/.ssh/authorized_keys && \
     chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys && \
@@ -56,16 +57,16 @@ RUN mkdir -p /root/.ssh && touch /root/.ssh/authorized_keys && \
       done; \
     fi
 
-RUN python3 -m pip install --upgrade pip setuptools wheel && \
-    pip config set global.index-url "${PIP_INDEX_URL}" && \
-    if [ -n "${PIP_TRUSTED_HOST}" ]; then pip config set global.trusted-host "${PIP_TRUSTED_HOST}"; fi && \
-    pip install -U \
+RUN python3 -m pip install --upgrade pip setuptools wheel uv && \
+    uv pip install --system --prerelease=allow \
       hydra-core==1.4.0.dev1 \
       git+https://github.com/acherstyx/hydra-torchrun-launcher.git \
-      datasets tiktoken sentencepiece boto3 einops packaging nvitop oss2 wandb \
+      transformers datasets tiktoken sentencepiece boto3 einops packaging nvitop oss2 wandb \
       pydantic jupyterlab isort TexSoup math-verify ninja psutil poetry colorlog \
       qwen-vl-utils ipdb ipython pytest yapf py-spy liger-kernel torchdata \
       torch-memory-saver codetiming ruff dill peft opencv-python fastapi \
       hf-transfer nvtx timm 'nvidia-ml-py>=12.560.30' 'optree>=0.13.0' \
-      'pyarrow>=15.0.0' pybind11 pylatexenc tensordict 'ray[all]' sglang && \
-    MAX_JOBS=${MAX_JOBS} pip install --no-build-isolation -U flash-attn
+      'pyarrow>=15.0.0' pybind11 pylatexenc tensordict 'ray[all]' sglang
+
+RUN uv pip install --system https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.7.16/flash_attn-2.8.3+cu128torch2.9-cp311-cp311-linux_x86_64.whl
+RUN uv pip install --system -U transformers
